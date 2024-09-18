@@ -1,0 +1,8 @@
+<jboss-deployment-structure>
+    <deployment>
+        <dependencies>
+            <module name="jakarta.persistence.api" />
+            <module name="jakarta.transaction.api" />
+        </dependencies>
+    </deployment>
+</jboss-deployment-structure>

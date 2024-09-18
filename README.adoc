@@ -1,0 +1,83 @@
+= Taxi Ride Service API
+
+This project is a Jakarta EE application that provides an API for managing taxi services, including drivers, passengers, and rides. It uses JPA for persistence (Hibernate with the H2 database), EJB, and JAX-RS to provide RESTful endpoints.
+
+You will need Java (at least version 11, and preferably 17) and Maven installed on your machine.
+
+== Application Structure
+
+The application provides a series of endpoints to manage:
+* Drivers
+* Passengers
+* Taxi Rides
+
+The endpoints allow CRUD operations and reporting on completed rides.
+
+== Prerequisites
+
+- Java JDK 11 or higher
+- Apache Maven
+
+== Building the Application
+
+To compile the application, use Maven:
+
+[source,shell]
+----
+mvn clean package
+----
+
+Maven will compile the application and provision a WildFly server in the `target/server` directory with the application already deployed.
+
+== Running the Application
+
+To run the application, use the commands:
+
+[source,shell]
+----
+cd target/server
+./bin/standalone.sh
+----
+
+The application will be accessible at http://localhost:8080/, and the API can be found at http://localhost:8080/api.
+
+== Testing the Application with Postman
+
+To test the API using Postman:
+
+1. Import the provided Postman collection into your Postman application:
+   - The collection is located in `src/main/resources/Taxi Ride Service API.postman_collection.json`.
+   - In Postman, click "Import" and select the collection file to import it.
+
+2. Execute the various requests in the collection to test the API endpoints, including:
+   - Listing rides
+   - Adding a new ride
+   - Editing an existing ride
+   - Deleting a ride
+   - Reporting earnings by driver
+
+== Running Integration Tests
+
+To run the integration tests and verify the application, use Maven:
+
+[source,shell]
+----
+mvn clean package verify
+----
+
+Tests in `src/test` are run against the server in `target/server`.
+
+== Configuring Arquillian
+
+To run the integration tests, Arquillian is configured to use a managed WildFly container. In the `src/test/resources/arquillian.xml` file, ensure that the `javaHome` property points to your Java installation. If you don't have a `JAVA_HOME` environment variable set, update the `javaHome` property directly in the `arquillian.xml` file to the path of your Java installation.
+
+Example:
+[source,xml]
+----
+<property name="javaHome">/path/to/your/java</property>
+----
+
+== Additional Resources
+
+* https://wildfly.org[WildFly]
+* https://docs.wildfly.org[WildFly Documentation]
